@@ -200,11 +200,25 @@ const buttons = document.querySelectorAll(".like-button")
 
 console.log(buttons)
 
+
+//mi creo una nodelist con i counter dentro
+const counters = document.querySelectorAll(".js-likes-counter")
+
+console.log(counters)
+
 // ad ogni bottone aggiungo una classe
-buttons.forEach(bottone => {
+//seconda fase: aggiungo pure il counter, dato che gli indici corrispondono è come se li associassi automaticamente
+buttons.forEach((bottone , i) => {
     bottone.addEventListener("click",
     function() {
         bottone.classList.add("like-button--liked");
+        let contatoreIesimo = counters[i];
+        let valoreContatore = parseInt(contatoreIesimo.innerHTML);
+        console.log(contatoreIesimo);
+        console.log(valoreContatore);
+        valoreContatore++;
+        contatoreIesimo.innerHTML = valoreContatore
+        
         //posts[i].likes = 50 ;
         //console.log(posts[i])
 
@@ -216,10 +230,7 @@ buttons.forEach(bottone => {
 //perchè semplicemente aggiornando i valori degli oggetti questi non vengono trasferiti nel template literal, questo è uno dei motivi per cui andremo ad utilizzare view.js come framework 
 
 
-//mi creo una nodelist con i counter dentro
-const counters = document.querySelectorAll(".js-likes-counter")
 
-console.log(counters)
 
 
 
