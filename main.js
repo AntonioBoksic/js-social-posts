@@ -217,11 +217,20 @@ buttons.forEach((bottone , i) => {
         let valoreContatore = parseInt(contatoreIesimo.innerHTML);
             //aggiungo una variabile likedPostId da pushare nell'array
             let likedPostId = 0
+            likedPostId = posts[i].id
+            
         // se ho già messo like: leva classe liked e diminuisci like counter
         if (bottone.classList.contains("like-button--liked")) {
                 bottone.classList.remove("like-button--liked");
+                //da qui in poi il ciclo riguarda l'array counters 
                 valoreContatore--;
                 contatoreIesimo.innerHTML = valoreContatore;
+                //levo id del post piaciuto dall'array che ho creato nello scope generale prima
+                
+                //splice e indexof li ho visti su google, ma non sono sicurissimo di come funzionino
+                const index = likedPosts.indexOf(posts[i].id);
+                const x = likedPosts.splice(index, 1);
+                console.log(likedPosts)
         }
         else {
                 //aggiungo la classe al bottone
@@ -236,7 +245,6 @@ buttons.forEach((bottone , i) => {
                 console.log(valoreContatore);
                 contatoreIesimo.innerHTML = valoreContatore
                 //aggiungo id del post piaciuto nell'array che ho creato nello scope generale prima
-                likedPostId = posts[i].id
                 likedPosts.push(likedPostId)
                 console.log(likedPosts)
         
