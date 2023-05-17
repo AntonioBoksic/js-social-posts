@@ -212,6 +212,15 @@ buttons.forEach(bottone => {
 )
 });
 
+// ora mi serve cambiare il contenuto di  class="js-likes-counter", quindi il suo innerHTML
+//perchè semplicemente aggiornando i valori degli oggetti questi non vengono trasferiti nel template literal, questo è uno dei motivi per cui andremo ad utilizzare view.js come framework 
+
+
+//mi creo una nodelist con i counter dentro
+const counters = document.querySelectorAll(".js-likes-counter")
+
+console.log(counters)
+
 
 
 
