@@ -204,31 +204,42 @@ const counters = document.querySelectorAll(".js-likes-counter")
 
 console.log(counters)
 
+//mi creo un array vuoto dove mettere id dei post piaciuti
+likedPosts = [];
+
 // ad ogni bottone aggiungo una classe
 //seconda fase: aggiungo pure il like counter, dato che gli indici corrispondono è come se li associassi automaticamente
 buttons.forEach((bottone , i) => {
     bottone.addEventListener("click",
     function() {
+        
         let contatoreIesimo = counters[i];
         let valoreContatore = parseInt(contatoreIesimo.innerHTML);
+            //aggiungo una variabile likedPostId da pushare nell'array
+            let likedPostId = 0
         // se ho già messo like: leva classe liked e diminuisci like counter
         if (bottone.classList.contains("like-button--liked")) {
-            bottone.classList.remove("like-button--liked");
-            valoreContatore--;
-            contatoreIesimo.innerHTML = valoreContatore;
+                bottone.classList.remove("like-button--liked");
+                valoreContatore--;
+                contatoreIesimo.innerHTML = valoreContatore;
         }
         else {
-            //aggiungo la classe al bottone
-        bottone.classList.add("like-button--liked");
-        //da qui in poi il ciclo riguarda l'array counters
-        //definizione variabili l'ho spostata sopra in modo da definirle prima del IF
-        //let contatoreIesimo = counters[i];
-        //let valoreContatore = parseInt(contatoreIesimo.innerHTML);
-        console.log(contatoreIesimo);
-        console.log(valoreContatore);
-        valoreContatore++;
-        console.log(valoreContatore);
-        contatoreIesimo.innerHTML = valoreContatore
+                //aggiungo la classe al bottone
+                bottone.classList.add("like-button--liked");
+                 //da qui in poi il ciclo riguarda l'array counters
+                //definizione variabili l'ho spostata sopra in modo da definirle prima del IF
+                //let contatoreIesimo = counters[i];
+                //let valoreContatore = parseInt(contatoreIesimo.innerHTML);
+                console.log(contatoreIesimo);
+                console.log(valoreContatore);
+                valoreContatore++;
+                console.log(valoreContatore);
+                contatoreIesimo.innerHTML = valoreContatore
+                //aggiungo id del post piaciuto nell'array che ho creato nello scope generale prima
+                likedPostId = posts[i].id
+                likedPosts.push(likedPostId)
+                console.log(likedPosts)
+        
 
         }
     }
