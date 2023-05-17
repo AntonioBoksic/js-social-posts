@@ -152,7 +152,7 @@ for (i = 0 ; i < posts.length; i++) {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" id="likeButton" data-postid="${posts[i].id}">
+                <a class="like-button  js-like-button"  id="likeButton" data-postid="${posts[i].id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -168,23 +168,66 @@ for (i = 0 ; i < posts.length; i++) {
     //aggiungo il template literal elPost nel container
     elContainer.innerHTML += elPost
 
+
+    //
+    /*
+    L' ERRORE è DA QUI IN POI USANDO GETELEMENTBYID/BYCLASS(QUERYSELECTOR: VADO SEMPRE A PRENDERE IL PRIMO LIKE BUTTON ( A PARTE CHE ID è SBAGLIATO A PRESCINDERE DATO CHE DOVREBBE ESSERE UNIVOCO, QUINDI NON POSSONO ESSERCENE 5),
+    ANCHE CON QUERY SELECTOR ALL SUCCEDE CHE...(commento da finire intanto finisco esercizio)
+    */
     //identifico il bottone in HTML 
+
+/*
     const elLikeButton = document.querySelector("#likeButton")
+
     
     console.log(elLikeButton)
 
     elLikeButton.addEventListener("click",
-    function() {
-        elLikeButton.classList.add("liked");
-        posts[i].likes = 50 ;
-        console.log(posts[i])
-        
-        
-        
-    }
-)
+        function() {
+            elLikeButton.classList.add("liked");
+            posts[i].likes = 50 ;
+            console.log(posts[i])
+
+        }
+    )
+                    */
 
 }
+
+// mi creo una nodelist con i bottoni dentro
+
+const buttons = document.querySelectorAll(".like-button")
+
+console.log(buttons)
+
+// ad ogni bottone aggiungo una classe
+buttons.forEach(bottone => {
+    bottone.addEventListener("click",
+    function() {
+        bottone.classList.add("like-button--liked");
+        //posts[i].likes = 50 ;
+        //console.log(posts[i])
+
+    }
+)
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -205,8 +248,6 @@ for (i = 0 ; i < posts.length; i++) {
 // //console.log(palla)
 
 // // ARRAY DI OGGETTI
-
-
 
 
 
