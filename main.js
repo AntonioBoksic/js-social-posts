@@ -209,16 +209,28 @@ console.log(counters)
 buttons.forEach((bottone , i) => {
     bottone.addEventListener("click",
     function() {
-        //aggiungo la classe al bottone
-        bottone.classList.add("like-button--liked");
-        //da qui in poi il ciclo riguarda l'array counters
         let contatoreIesimo = counters[i];
         let valoreContatore = parseInt(contatoreIesimo.innerHTML);
+        // se ho già messo like: leva classe liked e diminuisci like counter
+        if (bottone.classList.contains("like-button--liked")) {
+            bottone.classList.remove("like-button--liked");
+            valoreContatore--;
+            contatoreIesimo.innerHTML = valoreContatore;
+        }
+        else {
+            //aggiungo la classe al bottone
+        bottone.classList.add("like-button--liked");
+        //da qui in poi il ciclo riguarda l'array counters
+        //definizione variabili l'ho spostata sopra in modo da definirle prima del IF
+        //let contatoreIesimo = counters[i];
+        //let valoreContatore = parseInt(contatoreIesimo.innerHTML);
         console.log(contatoreIesimo);
         console.log(valoreContatore);
         valoreContatore++;
         console.log(valoreContatore);
         contatoreIesimo.innerHTML = valoreContatore
+
+        }
     }
 )
 });
