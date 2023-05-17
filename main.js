@@ -171,15 +171,15 @@ for (i = 0 ; i < posts.length; i++) {
     //identifico il bottone in HTML 
     const elLikeButton = document.querySelector("#likeButton")
     
-
     console.log(elLikeButton)
 
     elLikeButton.addEventListener("click",
     function() {
         elLikeButton.classList.add("liked");
         posts[i].likes = 50 ;
-        //return posts[i].likes
-        console.log(posts[i].likes)
+        console.log(posts[i])
+        
+        
         
     }
 )
@@ -189,7 +189,7 @@ for (i = 0 ; i < posts.length; i++) {
 
 
 
-
+//PROVE PER VEDERE SE SBAGLIO QUALCOSA A LIVELLO DI OGGETTO O ARRAY DI OGGETTI (PARE DI NO)
 // // OGGETTO SINGOLO
 // const palla = {
 //     "colore": "rosso",
