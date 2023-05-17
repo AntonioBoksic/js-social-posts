@@ -1,4 +1,3 @@
-
 const posts = [
     {
         "id": 1,
@@ -126,8 +125,6 @@ posts.forEach(element => {
 
 //provo con for normale
 
-
-
 for (i = 0 ; i < posts.length; i++) {
     const elPost = `<div class="post">
 
@@ -168,18 +165,16 @@ for (i = 0 ; i < posts.length; i++) {
     //aggiungo il template literal elPost nel container
     elContainer.innerHTML += elPost
 
-
-    //
     /*
     L' ERRORE è DA QUI IN POI USANDO GETELEMENTBYID/BYCLASS(QUERYSELECTOR: VADO SEMPRE A PRENDERE IL PRIMO LIKE BUTTON ( A PARTE CHE ID è SBAGLIATO A PRESCINDERE DATO CHE DOVREBBE ESSERE UNIVOCO, QUINDI NON POSSONO ESSERCENE 5),
     ANCHE CON QUERY SELECTOR ALL SUCCEDE CHE...(commento da finire intanto finisco esercizio)
     */
+
+    /*
     //identifico il bottone in HTML 
 
-/*
     const elLikeButton = document.querySelector("#likeButton")
-
-    
+ 
     console.log(elLikeButton)
 
     elLikeButton.addEventListener("click",
@@ -191,8 +186,11 @@ for (i = 0 ; i < posts.length; i++) {
         }
     )
                     */
-
 }
+
+//POST CORREZIONE :
+// ora mi serve cambiare il contenuto di  class="js-likes-counter", quindi il suo innerHTML
+//perchè semplicemente aggiornando i valori degli oggetti questi non vengono trasferiti nel template literal, questo è uno dei motivi per cui andremo ad utilizzare view.js come framework
 
 // mi creo una nodelist con i bottoni dentro
 
@@ -201,36 +199,31 @@ const buttons = document.querySelectorAll(".like-button")
 console.log(buttons)
 
 
-//mi creo una nodelist con i counter dentro
+//mi creo una nodelist con i like counter dentro
 const counters = document.querySelectorAll(".js-likes-counter")
 
 console.log(counters)
 
 // ad ogni bottone aggiungo una classe
-//seconda fase: aggiungo pure il counter, dato che gli indici corrispondono è come se li associassi automaticamente
+//seconda fase: aggiungo pure il like counter, dato che gli indici corrispondono è come se li associassi automaticamente
 buttons.forEach((bottone , i) => {
     bottone.addEventListener("click",
     function() {
+        //aggiungo la classe al bottone
         bottone.classList.add("like-button--liked");
+        //da qui in poi il ciclo riguarda l'array counters
         let contatoreIesimo = counters[i];
         let valoreContatore = parseInt(contatoreIesimo.innerHTML);
         console.log(contatoreIesimo);
         console.log(valoreContatore);
         valoreContatore++;
+        console.log(valoreContatore);
         contatoreIesimo.innerHTML = valoreContatore
-        
-        //posts[i].likes = 50 ;
-        //console.log(posts[i])
-
     }
 )
 });
 
-// ora mi serve cambiare il contenuto di  class="js-likes-counter", quindi il suo innerHTML
-//perchè semplicemente aggiornando i valori degli oggetti questi non vengono trasferiti nel template literal, questo è uno dei motivi per cui andremo ad utilizzare view.js come framework 
-
-
-
+ 
 
 
 
